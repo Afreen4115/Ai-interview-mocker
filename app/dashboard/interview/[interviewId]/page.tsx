@@ -26,7 +26,7 @@ const Interview: React.FC<InterviewProps> = ({ params }) => {
         const fetchInterviewId = async () => {
             const resolvedParams = await params;
             setInterviewId(resolvedParams.interviewId);
-            console.log(resolvedParams.interviewId);
+            // console.log(resolvedParams.interviewId);
             await GetInterviewDetails(resolvedParams.interviewId);
         };
 
@@ -40,9 +40,9 @@ const Interview: React.FC<InterviewProps> = ({ params }) => {
                     .select()
                     .from(mockInterview)
                     .where(eq(mockInterview.mockId, id));
-                console.log(result);
+                // console.log(result);
                 setInterviewData(result[0]);
-                console.log("response is ", result[0]);
+                // console.log("response is ", result[0]);
             } catch (error) {
                 console.error("Error fetching interview details:", error);
             }

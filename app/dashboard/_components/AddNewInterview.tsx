@@ -41,7 +41,6 @@ const AddNewInterview = () => {
         .replace("```json", "")
         .replace("```", "");
       const parsedResponse = JSON.parse(MockJsonResp);
-      console.log("My response", parsedResponse);
       setJsonResponse(MockJsonResp);
 
       // Insert into the database
@@ -58,7 +57,6 @@ const AddNewInterview = () => {
         })
         .returning({ mockId: mockInterview.mockId });
 
-      console.log("Insert response:", resp);
       if (resp) {
         setOpenDialog(false);
         router.push(`/dashboard/interview/${resp[0]?.mockId}`);

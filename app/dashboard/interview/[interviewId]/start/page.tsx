@@ -38,7 +38,6 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
     const fetchInterviewId = async () => {
       const resolvedParams = await params;
       setInterviewId(resolvedParams.interviewId);
-      console.log("Interview ID:", resolvedParams.interviewId);
       await getInterviewDetails(resolvedParams.interviewId);
     };
 
@@ -57,10 +56,10 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
           const jsonMockResp: MockInterviewQuestion[] = JSON.parse(
             result[0].jsonMocResp
           ); // Parse as an array
-          console.log("JSON mock response:", jsonMockResp);
+          // console.log("JSON mock response:", jsonMockResp);
           setMockInterviewQuestions(jsonMockResp); // Set as an array
           setInterviewData(result[0]);
-          console.log("Interview data set:", result[0]); // Log the whole interview data
+          // console.log("Interview data set:", result[0]); // Log the whole interview data
         }
       } catch (error) {
         console.error("Error fetching interview details:", error);
@@ -69,11 +68,11 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
   };
 
   // Log interviewData whenever it changes
-  useEffect(() => {
-    if (interviewData) {
-      console.log("Current interviewData:", interviewData);
-    }
-  }, [interviewData]);
+  // useEffect(() => {
+  //   if (interviewData) {
+  //     console.log("Current interviewData:", interviewData);
+  //   }
+  // }, [interviewData]);
 
   return (
     <div>

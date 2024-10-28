@@ -46,7 +46,6 @@ const Feedback: React.FC<FeedbackProps> = ({ params }) => {
         .from(UserAnswer)
         .where(eq(UserAnswer.mockIdRef, interviewId))
         .orderBy(UserAnswer.id);
-      console.log("feedback response", result);
       setFeedbackList(result);
     } catch (error) {
       console.error("Error fetching feedback:", error);

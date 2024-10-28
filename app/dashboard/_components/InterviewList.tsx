@@ -33,7 +33,6 @@ const InterviewList = () => {
         .where(eq(mockInterview.createdBy, emailAddress))
         .orderBy(desc(mockInterview.id));
 
-      console.log("interview list ", result);
       setInterviewList(result as Interview[]); // Ensure the result is typed correctly
     }
   };
