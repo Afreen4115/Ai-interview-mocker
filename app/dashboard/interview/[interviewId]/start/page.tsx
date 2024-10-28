@@ -9,19 +9,17 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface StartInterviewProps {
-  params: {
-    interviewId: string;
-  };
+  params: Promise<{ interviewId: string }>;
 }
 
 interface InterviewData {
   mockId: string;
-  jsonMocResp: string; // Assuming jsonMocResp is a JSON string
+  jsonMocResp: string;
 }
 
 interface MockInterviewQuestion {
   question: string;
-  answer: string; // Include answer field
+  answer: string;
 }
 
 const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
@@ -55,11 +53,9 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
         if (result.length > 0) {
           const jsonMockResp: MockInterviewQuestion[] = JSON.parse(
             result[0].jsonMocResp
-          ); // Parse as an array
-          // console.log("JSON mock response:", jsonMockResp);
-          setMockInterviewQuestions(jsonMockResp); // Set as an array
+          );
+          setMockInterviewQuestions(jsonMockResp);
           setInterviewData(result[0]);
-          // console.log("Interview data set:", result[0]); // Log the whole interview data
         }
       } catch (error) {
         console.error("Error fetching interview details:", error);
@@ -67,23 +63,14 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params }) => {
     }
   };
 
-  // Log interviewData whenever it changes
-  // useEffect(() => {
-  //   if (interviewData) {
-  //     console.log("Current interviewData:", interviewData);
-  //   }
-  // }, [interviewData]);
-
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Questions */}
         <QuestionsSection
           mockInterviewQuestions={mockInterviewQuestions}
           activeQuestionIndex={activeQuestionIndex}
           setActiveQuestionIndex={setActiveQuestionIndex}
         />
-        {/* Video/Audio recording */}
         <RecordAnswerSection
           mockInterviewQuestions={mockInterviewQuestions}
           activeQuestionIndex={activeQuestionIndex}
